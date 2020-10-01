@@ -98,4 +98,4 @@ async def sos(ctx):
     await ctx.send(embed= embed)
 
 keep_alive.keep_alive()
-bot.run('NzU5Mzg2NDkwMDEwMzM3MzUw.X28vxw.JravBcqz8DOIr6xj_ZbILJis6UA')
+機器人。運行（'不告訴你xd')
