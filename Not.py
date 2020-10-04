@@ -1,11 +1,23 @@
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
+import keep_alive
 
 bot = commands.Bot(command_prefix='!')
+
+load_dotenv()
+
+client = discord.Client()
 
 @bot.event
 async def on_ready():
     print("我準備好要上戰場了！！！")
+
+@bot.event
+async def on_member_join(member):
+    await member.create_dm()
+    await member.dm_channel.send(
+        f'Hi {member.name}, 記得到身分組認領區申請身分喔！ 並且記得點讚定閱還有分享歐！！！')
 
 @bot.event
 async def on_member_join(member):
@@ -47,8 +59,7 @@ async def ig(ctx):
 
 @bot.command()
 async def hi(ctx):
-    await ctx.send("叫我嗎？ :face_with_monocle: :face_with_monocle:
-:face_with_monocle:")
+    await ctx.send("叫我嗎？ :face_with_monocle::face_with_monocle::face_with_monocle:")
 
 @bot.command()
 async def 贊助(ctx):
@@ -77,27 +88,42 @@ async def 指令製作(ctx):
     await ctx.send("猴子@3807")
 
 @bot.command()
+async def nn(self, data):
+    guild = self.bot.get_guild(data.guild_id)
+    role - guild.get_role(759019503576940544)
+    await dota.member.add_roles(role)
+
+@bot.command()
+async def NN(self, data):
+    guild = self.bot.get_guild(data.guild_id)
+    role - guild.get_role(759019503576940544)
+    await dota.member.add_roles(role)
+
+@bot.command()
 async def sos(ctx):
     embed=discord.Embed(title="指令說明", color=0xff0000)
 
-    embed.add_field(name="ping", value="顯示我的延遲", inline=False)
-    embed.add_field(name="youtube", value="顯示小N的yt", inline=False)
-    embed.add_field(name="yt", value="顯示小N的yt", inline=False)
-    embed.add_field(name="粉絲專頁", value="顯示小N的FB", inline=False)
-    embed.add_field(name="facebook", value="顯示小N的FB", inline=False)
-    embed.add_field(name="fb", value="顯示小N的FB", inline=False)
-    embed.add_field(name="ig", value="顯示小N的IG", inline=False)
-    embed.add_field(name="贊助", value="贊助小N", inline=False)
-    embed.add_field(name="help", value="顯示help", inline=False)
-    embed.add_field(name="sos", value="顯示該表", inline=False)
-    embed.add_field(name="N", value="顯示小N的資料", inline=False)
-    embed.add_field(name="n", value="顯示小N的資料", inline=False)
-    embed.add_field(name="say", value="!say 加要我說的話", inline=False)
-    embed.add_field(name="安安", value="和我聊天", inline=False)
-    embed.add_field(name="hi", value="想和我聊天？？？", inline=False)
-    embed.add_field(name="指令製作", value="顯示指令製作人", inline=False)
+    embed.add_field(name="ping", value="顯示我的延遲", inline=True)
+    embed.add_field(name="youtube", value="顯示小N的yt", inline=True)
+    embed.add_field(name="yt", value="顯示小N的yt", inline=True)
+    embed.add_field(name="粉絲專頁", value="顯示小N的FB", inline=True)
+    embed.add_field(name="facebook", value="顯示小N的FB", inline=True)
+    embed.add_field(name="fb", value="顯示小N的FB", inline=True)
+    embed.add_field(name="ig", value="顯示小N的IG", inline=True)
+    embed.add_field(name="贊助", value="贊助小N", inline=True)
+    embed.add_field(name="help", value="顯示help", inline=True)
+    embed.add_field(name="sos", value="顯示該表", inline=True)
+    embed.add_field(name="N", value="顯示小N的資料", inline=True)
+    embed.add_field(name="n", value="顯示小N的資料", inline=True)
+    embed.add_field(name="say", value="!say 加要我說的話", inline=True)
+    embed.add_field(name="安安", value="和我聊天", inline=True)
+    embed.add_field(name="hi", value="想和我聊天？？？", inline=True)
+    embed.add_field(name="指令製作", value="顯示指令製作人", inline=True)
+    embed.add_field(name="NN", value="獲取身分組", inline=True)
+    embed.add_field(name="nn", value="獲取身分組", inline=True)
     embed.set_footer(text="作者：猴子@3807")
 
     await ctx.send(embed= embed)
 
+keep_alive.keep_alive()
 bot.run('不告訴你勒～～～')
