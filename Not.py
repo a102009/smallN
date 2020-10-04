@@ -85,19 +85,7 @@ async def say(ctx, *, arg):
 
 @bot.command()
 async def 指令製作(ctx):
-    await ctx.send("猴子@3807")
-
-@bot.command()
-async def nn(self, data):
-    guild = self.bot.get_guild(data.guild_id)
-    role - guild.get_role(759019503576940544)
-    await dota.member.add_roles(role)
-
-@bot.command()
-async def NN(self, data):
-    guild = self.bot.get_guild(data.guild_id)
-    role - guild.get_role(759019503576940544)
-    await dota.member.add_roles(role)
+    await ctx.send("猴子@3807"）
 
 @bot.command()
 async def sos(ctx):
