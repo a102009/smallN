@@ -1,8 +1,17 @@
-import discord
-from discord.ext import commands
-import keep_alive
 
-bot = commands.Bot(command_prefix='sn!',description='A bot that greets the user back.')
+import discord
+import keep_alive
+from discord.ext import commands
+from discord.utils import get
+from discord.ext import commands
+from discord.ext.commands import Bot
+from discord import Message, PartialEmoji
+#intents = discord.intents.defaulf()
+
+bot = commands.Bot(command_prefix='sn!', description='一個向用戶致意的機器人。')
+
+#owner_id=688181698822799414,                            
+    # 您的唯一用戶ID
 
 @bot.event
 async def on_ready():
@@ -11,11 +20,10 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-
-@bot.event
-async def on_member_join(member):
-    channe = bot.get_channel(759677671448772618)
-    await channe.send(f'歡迎 <@{member.name}>, 加入小N的粉絲團!! :yum: :yum: :yum: 記得到 #規則 查看伺服器規範')
+    activity = discord.Game(name="sn!", type=3)
+    activity = discord.Game(name="sn!", flixype=3)
+    await bot.change_presence(status=discord.Status.idle, activity=activity)
+    await bot.change_presence(status=discord.Status.idle, activity=activity)
 
 @bot.event
 async def on_member_join(member):
@@ -26,7 +34,7 @@ async def on_member_remove(member):
     channel = bot.get_channel(759677810674630656)
     await channel.send(f'@{member} 和我們說88 :cry: :cry: :cry: ')
     print(f"remove{member}")
-    
+
 @bot.command()
 async def info(ctx):
     embed = discord.Embed(title="好用的機器人", description="我多默好用～～～", color=0xeee657)
@@ -36,11 +44,11 @@ async def info(ctx):
     
     # 显示机器人所服务的数量。
     embed.add_field(name="Server count", value=f"{len(bot.guilds)}")
-
-   # 给用户提供一个链接来请求机器人接入他们的服务器
-    #embed.add_field(name="Invite", value="[Invite link](<insert your OAuth invitation link here>)")
-
     await ctx.send(embed=embed)
+
+@bot.command()
+async def dc(ctx):
+  await ctx.send("https://discord.gg/CPt8WZu")
 
 @bot.command()
 async def ping(ctx):
@@ -55,11 +63,10 @@ async def dog(ctx):
     await ctx.send("小N好帥對不對！！ 一定要說對歐！！！")
     await ctx.send("旺！旺！旺！")
     await ctx.send(":dog: :dog: :dog: ")
-    
 @bot.command()
 async def ytgo(ctx):
     await ctx.send("https://tw.noxinfluencer.com/youtube/realtime-subs-count/UC-HfdvueCHBZ2yUhodirqmA")
-
+  
 @bot.command()
 async def no(ctx):
     await ctx.send("別玩啦～～～")
@@ -86,7 +93,15 @@ async def ig(ctx):
 
 @bot.command()
 async def hi(ctx):
-    await ctx.send("叫我嗎？ :face_with_monocle::face_with_monocle::face_with_monocle:")
+    await ctx.send("叫我嗎？ :face_with_monocle: :face_with_monocle: :face_with_monocle:")
+
+@bot.command()
+async def qq(ctx):
+  await ctx.send('https://store.line.me/stickershop/product/3206865/zh-Hant')
+
+@bot.command()
+async def QQ(ctx):
+  await ctx.send('https://store.line.me/stickershop/product/3206865/zh-Hant')
 
 @bot.command()
 async def hihi(ctx):
@@ -111,13 +126,19 @@ async def 安安(ctx):
 
 @bot.command()
 async def say(ctx, *, arg):
-  await ctx.message.delete()
-  await ctx.send(arg)
+    await ctx.message.delete()
+    await ctx.send(arg)
 
 @bot.command()
 async def 指令製作(ctx):
     await ctx.send("猴子@3807")
 
+@bot.command()
+async def m(ctx, *, arg):
+    await ctx.author.send(arg)
+    await ctx.send("想和我聊天我？？")
+    await ctx.send("早說麼!!")
+    
 @bot.command()
 async def sos(ctx):
     embed=discord.Embed(title="指令說明 前綴為sn!", color=0xff0000)
@@ -130,6 +151,7 @@ async def sos(ctx):
     embed.add_field(name="fb", value="顯示小N的FB", inline=True)
     embed.add_field(name="ig", value="顯示小N的IG", inline=True)
     embed.add_field(name="贊助", value="贊助小N", inline=True)
+    embed.add_field(name="QQ", value="想要小N的Q版貼圖嗎那打我吧！！", inline="True")
     embed.add_field(name="dog", value="我好狗腿", inline=True)
     embed.add_field(name="help", value="顯示help", inline=True)
     embed.add_field(name="sos", value="顯示該表", inline=True)
@@ -144,5 +166,6 @@ async def sos(ctx):
 
     await ctx.send(embed= embed)
 
+
 keep_alive.keep_alive()
-bot.run('你機器人的tokn')
+bot.run('秘密')
